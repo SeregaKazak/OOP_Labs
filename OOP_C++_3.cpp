@@ -13,12 +13,10 @@ public:
         : name(n), health(h), attack(a), defense(d) {
     }
 
-    // Перегрузка оператора ==
     bool operator==(const Character& other) const {
         return name == other.name && health == other.health;
     }
 
-    // Перегрузка оператора <<
     friend std::ostream& operator<<(std::ostream& os, const Character& character) {
         os << "Character: " << character.name << ", HP: " << character.health
             << ", Attack: " << character.attack << ", Defense: " << character.defense;
@@ -42,17 +40,14 @@ public:
     std::string getName() const { return name; }
     double getWeight() const { return weight; }
 
-    // Перегрузка оператора +
     Weapon operator+(const Weapon& other) const {
         return Weapon(this->name + " + " + other.name, this->damage + other.damage, this->weight + other.weight);
     }
 
-    // Перегрузка оператора >
     bool operator>(const Weapon& other) const {
         return damage > other.damage;
     }
 
-    // Перегрузка оператора << для вывода информации об оружии
     friend std::ostream& operator<<(std::ostream& os, const Weapon& weapon) {
         os << "Weapon: " << weapon.getName() << ", Damage: " << weapon.getDamage()
             << ", Weight: " << weapon.getWeight();
@@ -72,7 +67,7 @@ int main() {
         std::cout << "Hero1 and Hero3 are different!\n";
     }
 
-    std::cout << hero1 << std::endl; // Вывод информации о персонаже
+    std::cout << hero1 << std::endl;
 
     Weapon sword("Sword", 20, 2.5);
     Weapon bow("Bow", 15, 1.5);
